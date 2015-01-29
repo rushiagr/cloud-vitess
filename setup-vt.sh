@@ -6,17 +6,17 @@ cd ~/src/github.com/youtube/vitess/
 
 cd ~/src/github.com/youtube/vitess/examples/local
 
-#./zk-up.sh
+./zk-up.sh
 
 sleep 5
 
-#./vtctld-up.sh
+./vtctld-up.sh
 
 sleep 5
 
 $VTROOT/bin/vtctlclient -server localhost:15000
 
-#./vttablet-up.sh
+./vttablet-up.sh
 
 sleep 5
 
@@ -34,5 +34,3 @@ $VTROOT/bin/vtctlclient -server localhost:15000 ListAllTablets test
 sleep 5
 
 $VTROOT/bin/vtctlclient -server localhost:15000 ApplySchemaKeyspace -simple -sql "$(cat create_test_table.sql)" test_keyspace
-
-
