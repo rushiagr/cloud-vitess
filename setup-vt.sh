@@ -27,10 +27,18 @@ sleep 5
 
 $VTROOT/bin/vtctlclient -server localhost:15000 ReparentShard -force test_keyspace/0 test-0000000100
 
-sleep 5
+sleep 2
 
 $VTROOT/bin/vtctlclient -server localhost:15000 ListAllTablets test
 
-sleep 5
+sleep 2
 
 $VTROOT/bin/vtctlclient -server localhost:15000 ApplySchemaKeyspace -simple -sql "$(cat create_test_table.sql)" test_keyspace
+
+sleep 2
+
+./vtgate-up.sh
+
+sleep 2
+
+./client.sh --server=localhost:15001
