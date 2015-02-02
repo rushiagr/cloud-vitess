@@ -16,7 +16,7 @@ sleep 5
 
 $VTROOT/bin/vtctlclient -server localhost:15000
 
-./vttablet-up.sh
+./twoshards/vttablet-up.sh
 
 sleep 5
 
@@ -27,7 +27,11 @@ sleep 5
 
 $VTROOT/bin/vtctlclient -server localhost:15000 ReparentShard -force test_keyspace/0 test-0000000100
 
-sleep 2
+sleep 5
+
+$VTROOT/bin/vtctlclient -server localhost:15000 ReparentShard -force test_keyspace/1 test-0000000200
+
+sleep 5
 
 $VTROOT/bin/vtctlclient -server localhost:15000 ListAllTablets test
 
@@ -39,6 +43,6 @@ sleep 2
 
 ./vtgate-up.sh
 
-sleep 2
+sleep 10
 
 ./client.sh --server=localhost:15001
