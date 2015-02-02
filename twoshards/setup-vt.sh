@@ -34,10 +34,11 @@ $VTROOT/bin/vtctlclient -server localhost:15000 ReparentShard -force test_keyspa
 sleep 5
 
 $VTROOT/bin/vtctlclient -server localhost:15000 ListAllTablets test
+$VTROOT/bin/vtctlclient -server localhost:15000 SetKeyspaceShardingInfo -split_shard_count=2 test_keyspace replication_id bytes
 
 sleep 2
 
-$VTROOT/bin/vtctlclient -server localhost:15000 ApplySchemaKeyspace -simple -sql "$(cat create_test_table.sql)" test_keyspace
+$VTROOT/bin/vtctlclient -server localhost:15000 ApplySchemaKeyspace -simple -sql "$(cat new_table.sql)" test_keyspace
 
 sleep 2
 

@@ -5,4 +5,6 @@
 # TODO(rushiagr): wait till all the processes are killed
 pkill -u $USER -f $VTDATAROOT
 
+sleep 2
+
 rm -rf $VTDATAROOT/*
