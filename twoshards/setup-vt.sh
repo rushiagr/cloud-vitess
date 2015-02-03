@@ -8,8 +8,6 @@ cd ~/src/github.com/youtube/vitess/examples/local
 
 ./zk-up.sh
 
-sleep 5
-
 ./vtctld-up.sh
 
 sleep 5
