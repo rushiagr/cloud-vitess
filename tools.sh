@@ -32,3 +32,11 @@ vttablet() {
 
     disown -a
 }
+
+vdb() {
+    # Usage: vdb 101
+    # This will connect to vt_0000000101 tablet
+    /usr/bin/mysql -u vt_dba -S /home/vagrant/vtdataroot/vt_0000000$1/mysql.sock
+}
+
+alias vc='vtctlclient -server localhost:15000'
