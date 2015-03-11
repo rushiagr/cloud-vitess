@@ -9,3 +9,7 @@ pkill -u $USER -f $VTDATAROOT
 sleep 2
 
 rm -rf $VTDATAROOT/*
+
+sleep 2
+
+sudo kill -9 $(ps aux | grep vttablet | awk '{print $2}')
